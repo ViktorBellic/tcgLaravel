@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Imagen;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\File;
 class ImageController extends Controller
 {
@@ -45,8 +46,10 @@ class ImageController extends Controller
         return redirect()->route('Profile.profile')->with([
             'message' => 'La foto se ha subido correctamente'
         ]);
+    }
 
-
-
+    public function getImage($filename){
+        $file = Storage::disk('images')->get($filename);
+        return new Response($file, 200);
     }
 }

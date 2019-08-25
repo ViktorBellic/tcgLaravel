@@ -61,6 +61,10 @@
                             <div class="data-user">
                             <h1>{{$image->user->name.' '.$image->user->email}}</h1>
                             </div>
+
+                            <div class="card-body">
+                                <img src="{{ route('image.file',['filename'=> $image->image_path]) }}"/>
+                            </div>
                         </div>
                     </div>
                  @endforeach

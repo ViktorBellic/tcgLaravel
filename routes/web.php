@@ -50,7 +50,8 @@ Route::get('/edit','UserController@configuracion')->name('edit'); //ruta para ed
 ;*/
 Route::post('/actualizar','UserController@update')->name('actualizar');
 Route::get('/image/{filename}','UserController@obtenerImagen')->name('obtenerImagen'); //Ruta para subir imagen
-//Route::get('/image/{filename2}','UserController@obtenerImagenGallery')->name('obtenerImagenGallery');
 //Ruta subir imagen
 Route::get('/subir-imagen','ImageController@create')->name('image.create');
 Route::post('/image/save','ImageController@save')->name('image.save');
+
+Route::get('/image/file/{filename}','ImageController@getImage')->name('image.file');
