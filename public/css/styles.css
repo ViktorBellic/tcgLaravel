@@ -1,0 +1,63 @@
+
+.header_section{
+
+    position: relative;
+    background: gray;
+    height: 30%;
+    width: 100%;
+}
+.logo_P{
+    width: 10%;
+    height: 25%;
+
+}
+
+.pub_image .container_avatar{
+    width: 35px;
+    height: 35px;
+    border-radius: 900px;
+    overflow: hidden;
+    margin-left: 20px;
+}
+.container_avatar img{
+    background: purple;
+    height: 200px;
+    width: 250px;
+}
+
+.container_avatar img .pub_image .container_avatar{
+    height: 100%;
+
+}
+
+.pub_image .container_avatar{
+    float: left;
+    margin-right: 15px;
+}
+
+.pub_image .data-user{
+    font-weight: bold;
+    line-height: 40px;
+
+}
+
+
+
+
+
+
+
+
+form .avatar{
+    /*display: block;*/
+    right: 200px;
+    top: 5%;
+    height: 100px;
+    width: 50px;
+    background: gold;
+
+  left: 30px;
+  border: 3px solid #73AD21;
+}
+
+
