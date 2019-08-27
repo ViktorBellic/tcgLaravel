@@ -52,6 +52,7 @@
             </div>
         </nav>
     </div>
+    <div>prueba222</div>
     <div>
     @include('includes.message')
 </div>
@@ -59,7 +60,7 @@
             @yield('content')
         </main>
     </header>
-    <footer> Footer
+    <footer> Footer  aaaaaaaa
     </footer>
 </body>
 </html>
