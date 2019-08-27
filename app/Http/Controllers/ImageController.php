@@ -43,7 +43,7 @@ class ImageController extends Controller
         }
 
         $image->save();
-        return redirect()->route('Profile.profile')->with([
+        return redirect()->route('/')->with([
             'message' => 'La foto se ha subido correctamente'
         ]);
     }

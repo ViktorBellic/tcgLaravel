@@ -44,7 +44,45 @@
 
 }
 
+.image-container{
+    max-height:400px;
+    width: 100%;
+    overflow: hidden;
+}
 
+.image-container img{
+   width: 100%;
+}
+
+.pub_image .card-body{
+    padding: 0px;
+ }
+
+ .pub_image .description{
+    padding: 20px;
+    padding-bottom: 0px;
+
+
+ }
+ .pub_image .btn-comments{
+    margin: 20px;
+    margin-top: 0px;
+    padding-bottom: 0px;
+    margin-left: 0px;
+
+ }
+
+ .likes{
+     float: left;
+     padding: 20px;
+     padding-bottom: 0px;
+     padding-top: 0px;
+     padding-right: 5px;
+ }
+
+ .likes img{
+     width: 20px;
+ }
 
 
 

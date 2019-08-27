@@ -10,11 +10,11 @@ class Like extends Model
 
 
     public function usuario(){
-        return $this->belognsTo('App\User','user_id'); // Para relacionar
+        return $this->belongsTo('App\User','user_id'); // Para relacionar
     }
 
     public function image(){
-        return $this->belognsTo('App\Imagen','image_id'); // Para relacionar
+        return $this->belongsTo('App\Imagen','image_id'); // Para relacionar
     }
 
 }

@@ -16,7 +16,7 @@ class UserController extends Controller
         $this->middleware('auth');
     }
     public function index(){
-        $images = Imagen::orderBy('user_id')->get();
+        $images = Imagen::orderBy('user_id')->paginate(5);
 
 
         return view('Profile.profile',[

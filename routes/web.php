@@ -15,6 +15,7 @@
 //==================RECORDAR PONER AUTENTICACION A LAS RUTAS
 
 use App\Imagen;
+
 /*
 Route::get('/', function () {
     $images = Imagen::all();
@@ -53,5 +54,6 @@ Route::get('/image/{filename}','UserController@obtenerImagen')->name('obtenerIma
 //Ruta subir imagen
 Route::get('/subir-imagen','ImageController@create')->name('image.create');
 Route::post('/image/save','ImageController@save')->name('image.save');
+
 
 Route::get('/image/file/{filename}','ImageController@getImage')->name('image.file');
