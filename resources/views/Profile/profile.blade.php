@@ -69,6 +69,7 @@
                                 </div>
 
                                 <div class="description">
+                                    <span class="date">{{FormatTime::LongTimeFilter($image->created_at)}}</span>
                                    <p> {{$image->description}}</p>
                                 </div>
                                 <div class="likes">
