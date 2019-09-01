@@ -57,3 +57,9 @@ Route::post('/image/save','ImageController@save')->name('image.save');
 
 
 Route::get('/image/file/{filename}','ImageController@getImage')->name('image.file');
+Route::get('/imagen/{id}','ImageController@detail')->name('image.detail');
+
+
+
+
+

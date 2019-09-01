@@ -14,7 +14,7 @@ class ImagenTable extends Migration
     public function up()
     {
         Schema::create('imagens', function (Blueprint $table){
-            $table->increments('id_imagen');
+            $table->increments('id');
            // $table->integer('user_id')->unsigned();
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');

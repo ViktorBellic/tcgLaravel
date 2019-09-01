@@ -59,7 +59,9 @@
                                 </div>
                             @endif
                             <div class="data-user">
-                                <h1>{{$image->user->name.' '.$image->user->email}}</h1>
+                                <a href="{{ route('image.detail', ['id' => $image->id])}}">
+                                    <h1>{{$image->user->name.' '.$image->user->email.' '.$image->id_imagen}}</h1>
+                                </a>
                             </div>
                             <div class="card-body">
                                 <div class="image-container">
