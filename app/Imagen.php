@@ -13,7 +13,7 @@ class Imagen extends Model
     }
 
     public function likes(){
-        return $this->hasMany('App\Like');
+        return $this->hasMany('App\Like','image_id');
     }
 
     // Relacion muchos a uno

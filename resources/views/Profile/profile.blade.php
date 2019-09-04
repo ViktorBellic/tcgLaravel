@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <!--Temporal--> <link rel="stylesheet" href="{{('css/styles.css')}}">
 <script src="{{ asset('js/app.js') }}" defer></script>
-
+<script src="{{ asset('js/main.js') }}" ></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -50,7 +50,7 @@
              @include('includes.message')
             <div>
                 <h1><a href="{{route('image.create')}}">subir imagen</a></h1>
-                @foreach($images as $image)
+        <!--        @foreach($images as $image)
                     <div class="card pub_image">
                         <div class="card-header">
                             @if($image->user->image)
@@ -72,9 +72,23 @@
                                     <span class="date">{{FormatTime::LongTimeFilter($image->created_at)}}</span>
                                    <p> {{$image->description}}</p>
                                 </div>
-                                <div class="likes">
-                                    <img src="{{asset('img/greyHeart.png')}}">
-                                </div>
+                          <div class="likes">-->
+                                <!--Comprobar si un usuario le dio like a una imagen-->
+                <!--                <?php $user_like = false; ?>
+
+                                    @foreach($image->likes as $like)
+                                        @if($like->user->id == Auth::user()->id)
+                                        <?php $user_like = true; ?>
+                                        @endif
+                                    @endforeach
+
+                                    @if($user_like)
+                                    <img src="{{asset('img/redHeart.png')}}" data-id="{{$image->id}}"class="btn-dislike">
+                                    @else
+                                    <img src="{{asset('img/greyHeart.png')}}" data-id ="{{$image->id}}" class="btn-like">
+                                    @endif
+                                   <span class="number_likes"> {{count($image->likes)}}</span>
+                             </div>
                                 <div class="comments">
                                     <a href="" class="btn
                                     btn-sm btn-warning btn-comments">Comentarios({{count($image->comments)}})</a>
@@ -83,10 +97,10 @@
 
                         </div>
                     </div>
-                 @endforeach
+                 @endforeach-->
                 <!--pagiacion -->
-                <div class="clearfix"> </div>
-                {{$images->links()  }}
+       <!--         <div class="clearfix"> </div>
+                {{$images->links()  }}-->
                 <ul>
                     <li>Carta1</li>
                     <li>Carta2</li>
