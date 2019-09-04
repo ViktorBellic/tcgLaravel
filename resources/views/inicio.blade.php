@@ -100,7 +100,7 @@
             @yield('content')
         </main>
     </header>
-    <footer> Footer
+    <footer> Footer  aaaaaaaa
     </footer>
 </body>
 </html>
