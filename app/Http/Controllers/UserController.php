@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Imagen;
-
+use App\User;
 class UserController extends Controller
 {
     //No autorizar usuarios no logoeados
@@ -15,34 +15,22 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
+
     public function index(){
-        $images = Imagen::orderBy('user_id')->paginate(5);
-
-
+        $images = Imagen::orderBy('user_id','desc')->paginate(5);
         return view('Profile.profile',[
             'images' =>$images
         ]);
     }
 
-
     public function configuracion(){
         return view('Profile.edit');
     }
 
-
     public function update(Request $request){
-
         // Conseguir usuario identificado
         $user = \Auth::user();
         $id = $user->id;
-
-        // Validacion del Formulario
-      /*  $validacion = $this->validate($request,[
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|max:255|unique:users',
-
-        ]);*/
-
         // Recoger datos del formulario
         $id = \Auth::user()->id;
         $name = $request->input('name');
@@ -53,9 +41,7 @@ class UserController extends Controller
         $user->email = $email;
 
         // Subir la imagen
-
         $image_path = $request->file('image_path');
-
         if($image_path){
             // Colocar nombre unico
             $image_path_name = time().$image_path->getClientOriginalName();
@@ -66,8 +52,7 @@ class UserController extends Controller
             $user->image= $image_path_name;
         }
 
-        // Ejecutar consulta y cambios en la base de datos
-
+        // Ejecutar consulta y cambios en la base de datos para editar el perfil
         $user->update();
         return redirect()->route('edit')
                          ->with(['message'=>'Usuario actualizado Correctamente']);
@@ -78,10 +63,12 @@ class UserController extends Controller
 
         return new Response($file,200);
     }
-    /*
-    public function obtenerImagenGellery($filename2){
-        $file2 = Storage::disk('images')->get($filename2);
 
-        return new Response($file2,200);
-    }*/
+    public function profile($id){
+        $user = User::find($id);
+
+        return view('user.profile',[
+            'user' =>$user
+        ]);
+    }
 }

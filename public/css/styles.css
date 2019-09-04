@@ -43,12 +43,20 @@
     line-height: 40px;
 
 }
+.pub_image .data-user a{
+    color: black;
 
+}
 .image-container{
     max-height:400px;
     width: 100%;
     overflow: hidden;
 }
+
+.image-detail{
+    max-height: 500px;
+}
+
 
 .image-container img{
    width: 100%;
@@ -83,9 +91,14 @@
  .likes img{
      width: 20px;
  }
+ .pub_image_detail .comments {
+     padding: 30px;
+ }
 
-
-
+.number_likes{
+    color: gray;
+    font-size: 11px;
+}
 
 
 

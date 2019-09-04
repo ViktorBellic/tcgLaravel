@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedInteger('image_id');
-            $table->foreign('image_id')->references('id_imagen')->on('imagens')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('image_id')->references('id')->on('imagens')->onDelete('cascade')->onUpdate('cascade');
             $table->longText('content',255);
             $table->date('created_at');
             $table->date('updated_at');
