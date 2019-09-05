@@ -18,13 +18,13 @@ class UserController extends Controller
 
     public function index(){
         $images = Imagen::orderBy('user_id','desc')->paginate(5);
-        return view('Profile.profile',[
+        return view('user.profile',[
             'images' =>$images
         ]);
     }
 
     public function configuracion(){
-        return view('Profile.edit');
+        return view('user.edit');
     }
 
     public function update(Request $request){
