@@ -16,24 +16,10 @@
 
 use App\Imagen;
 
-/*
-Route::get('/', function () {
-    $images = Imagen::all();
-    foreach($images as $image){
-        echo $image->user_id."<br/>";
-        var_dump($image->user->name." ".$image->user->email);
-        echo "<hr/>";
-    }
-    die();
-});
-*/
 Route::get('/', function () {
     return view('inicio');
 });
-Route::get('/profile', function () {
 
-    return view('Profile/profile');
-});
 /*
 Route::resource('products','ProductController');
 Route::resource('user','UsuarioController');
