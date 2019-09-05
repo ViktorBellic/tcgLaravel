@@ -19,6 +19,9 @@ use App\Imagen;
 Route::get('/', function () {
     return view('inicio');
 });
+Route::get('/home', function () {
+    return view('home.inicio');
+});
 
 /*
 Route::resource('products','ProductController');
@@ -26,10 +29,11 @@ Route::resource('user','UsuarioController');
 Route::resource('user','UserController');
 */
 Auth::routes();
+
 //Ruta para cargar pubicaciones en perfil de usuario... creo que lo voy a sacar
 Route::get('/profile','UserController@index');
 //Ruta para cargar imagenes en el inicio
-Route::get('/','HomeController@index');
+ Route::get('/home','HomeController@index');
 //ruta para editar perfil
 Route::get('/edit','UserController@configuracion')->name('edit');
 Route::post('/actualizar','UserController@update')->name('actualizar');
