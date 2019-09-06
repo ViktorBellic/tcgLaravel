@@ -34,10 +34,10 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <a class="navbar-brand" href="{{route('login')}}">Login</a>
+                <a class="navbar-brand" href="">TC.GG</a>
                 <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{url('/home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{route('profile',['id'=>Auth::user()->id])}}">Perfil <span class="sr-only">(current)</span></a>
@@ -85,7 +85,7 @@
             </div>
         </nav>
      </div>
-
+     @include('includes.message')
     <main class="py-4">
             @yield('content')
         </main>
