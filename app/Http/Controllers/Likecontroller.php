@@ -34,7 +34,6 @@ class Likecontroller extends Controller
 
         //Guardar
         var_dump($like);
-            die();
         $like->save();
         return response()->json([
             'like' =>$like
