@@ -9,7 +9,7 @@ class Like extends Model
     protected $table = 'likes';
 
 
-    public function user(){
+    public function usuario(){
         return $this->belongsTo('App\User','user_id'); // Para relacionar
     }
 

@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
-use Illuminate\Http\Response;
 use App\Imagen;
 
 class HomeController extends Controller
@@ -21,17 +18,14 @@ class HomeController extends Controller
     }
 
     public function index(){
-        $images = Imagen::orderBy('user_id','desc')->paginate(5);
+        $images = Imagen::orderBy('user_id', 'desc')->get();
 
-        return view('home',[
+
+        return view('Profile.profile',[
             'images' =>$images
         ]);
-    }
 
-    public function obtenerImagen($filename){
-        $file = Storage::disk('users')->get($filename);
 
-        return new Response($file,200);
     }
     /**
      * Show the application dashboard.

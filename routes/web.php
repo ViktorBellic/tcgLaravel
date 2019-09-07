@@ -24,32 +24,31 @@ Route::get('/', function () {
 Route::resource('products','ProductController');
 Route::resource('user','UsuarioController');
 Route::resource('user','UserController');
-*/
+
 Auth::routes();
-//Ruta para cargar pubicaciones en perfil de usuario... creo que lo voy a sacar
+
 Route::get('/profile','UserController@index');
-//Ruta para cargar imagenes en el inicio
-Route::get('/','HomeController@index');
-//ruta para editar perfil
-Route::get('/edit','UserController@configuracion')->name('edit');
+//Route::get('/profile','HomeController@index');
+
+Route::get('/edit','UserController@configuracion')->name('edit'); //ruta para editar perfil
+/*
+//Route::get('/home', 'HomeController@index')->name('home');
+
+;*/
 Route::post('/actualizar','UserController@update')->name('actualizar');
-
-//Ruta para subir imagen
-Route::get('/image/{filename}','UserController@obtenerImagen')->name('obtenerImagen');
-
+Route::get('/image/{filename}','UserController@obtenerImagen')->name('obtenerImagen'); //Ruta para subir imagen
 //Ruta subir imagen
 Route::get('/subir-imagen','ImageController@create')->name('image.create');
 Route::post('/image/save','ImageController@save')->name('image.save');
-//Ruta para obtener imagen
+
+
 Route::get('/image/file/{filename}','ImageController@getImage')->name('image.file');
 Route::get('/imagen/{id}','ImageController@detail')->name('image.detail');
-//Ruta para los comentarios
+
 Route::post('/comment/save','CommentController@save')->name('comment.save');
 Route::get('/comment/delete/{id}','CommentController@delete')->name('comment.delete');
-//Ruta para Likes
-Route::get('/like/{image_id}','LikeController@like')->name('like.save');
-Route::get('/dislike/{image_id}','LikeController@dislike')->name('like.delete');
-Route::get('/likes','LikeController@index')->name('likes');
+
+
 
 Route::get('/perfil/{id}','UserController@profile')->name('profile');
 
