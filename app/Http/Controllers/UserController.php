@@ -22,6 +22,18 @@ class UserController extends Controller
             'images' =>$images
         ]);
     }
+    public function usersIndex($search = null){
+
+        if(!empty($search)){
+            $users = User::where('name','LIKE','%'.$search.'%')->orWhere('email','LIKE','%'.$search.'%')->orderBy('id','desc')->paginate(5);
+        }else{
+        $users = User::orderBy('id','desc')->paginate(5);
+        }
+        return view('user.index',[
+            'users' => $users
+        ]);
+
+}
 
     public function configuracion(){
         return view('user.edit');
@@ -71,4 +83,6 @@ class UserController extends Controller
             'user' =>$user
         ]);
     }
+
+
 }

@@ -59,6 +59,9 @@ Route::get('/perfil/{id}','UserController@profile')->name('profile');
 
 //Ruta para eliminar imagen de una publicación si el usuario es dueño de la misma
 Route::get('/imagen/delete/{id}','ImageController@delete')->name('image.delete');
-
+//Rutas para la edición de una foto
 Route::get('/imagen_editar/{id}','ImageController@edit')->name('image.edit');
 Route::post('/image/update','ImageController@update')->name('image.update');
+
+//ruta buscador de usuarios
+Route::get('/gente/{search?}','UserController@usersIndex')->name('users.index');

@@ -46,7 +46,7 @@
                     <a class="nav-link" href="{{route('likes')}}">Favoritos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                    <a class="nav-link " href="{{route('users.index')}}" tabindex="-1" aria-disabled="true">Gente</a>
                 </li>
                 </ul>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
