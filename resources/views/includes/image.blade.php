@@ -18,6 +18,7 @@
                 <span class="date">{{FormatTime::LongTimeFilter($image->created_at)}}</span>
                 <p> {{$image->description}}</p>
             </div>
+            <h1>includes.like</h1>
             <div class="likes">
                 <!--Comprobar si un usuario le dio like a una imagen-->
                 <?php $user_like = false; ?>
@@ -27,9 +28,9 @@
                 @endif
                 @endforeach
                 @if($user_like)
-                <img src="{{asset('img/redHeart.png')}}" data-id="{{$image->id}}"class="btn-dislike">
+                    <img src="{{asset('img/redHeart.png')}}" data-id="{{$image->id}}"class="btn-dislike">
                 @else
-                <img src="{{asset('img/greyHeart.png')}}" data-id ="{{$image->id}}" class="btn-like">
+                    <img src="{{asset('img/greyHeart.png')}}" data-id ="{{$image->id}}" class="btn-like">
                 @endif
                 <span class="number_likes"> {{count($image->likes)}}</span>
                 </div>

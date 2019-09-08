@@ -33,7 +33,7 @@ Auth::routes();
 //Ruta para cargar pubicaciones en perfil de usuario... creo que lo voy a sacar
 Route::get('/profile','UserController@index');
 //Ruta para cargar imagenes en el inicio
- Route::get('/home','HomeController@index');
+ Route::get('/home','HomeController@index')->name('homeUser');
 //ruta para editar perfil
 Route::get('/edit','UserController@configuracion')->name('edit');
 Route::post('/actualizar','UserController@update')->name('actualizar');
@@ -57,5 +57,8 @@ Route::get('/likes','LikeController@index')->name('likes');
 
 Route::get('/perfil/{id}','UserController@profile')->name('profile');
 
+//Ruta para eliminar imagen de una publicación si el usuario es dueño de la misma
+Route::get('/imagen/delete/{id}','ImageController@delete')->name('image.delete');
 
-
+Route::get('/imagen_editar/{id}','ImageController@edit')->name('image.edit');
+Route::post('/image/update','ImageController@update')->name('image.update');

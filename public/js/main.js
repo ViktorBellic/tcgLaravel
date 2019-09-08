@@ -14,7 +14,7 @@ window.addEventListener('load', function(){
                 url: url+'/like/'+$(this).data('id'),
                 type: 'GET',
                 success: function(response){
-                   // console.log(response);
+                    console.log(response);
                     if(response.like){
                        console.log('Has dado like a la publicacion');
                     }else{
@@ -36,7 +36,7 @@ window.addEventListener('load', function(){
                 url: url+'/dislike/'+$(this).data('id'),
                 type: 'GET',
                 success: function(response){
-                   // console.log(response);
+                    console.log(response);
                     if(response.like){
                        console.log('Has dado dislike a la publicacion');
                     }else{
