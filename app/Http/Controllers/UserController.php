@@ -15,13 +15,14 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-
+    //Esta funcion index es la encargada de cargar las imagenes de todos los usuarios, lista la ultima publicacion ///publicada
     public function index(){
         $images = Imagen::orderBy('user_id','desc')->paginate(5);
         return view('user.profile',[
             'images' =>$images
         ]);
     }
+    // Esta funcion es la encargada de buscar personas en el buscador
     public function usersIndex($search = null){
 
         if(!empty($search)){
@@ -34,11 +35,12 @@ class UserController extends Controller
         ]);
 
 }
-
+    //Esta funcion redirije al usuario a la vista user.edit
     public function configuracion(){
         return view('user.edit');
     }
 
+    //Esta funcion es la encargada de actualizar los datos del perfil del usuario
     public function update(Request $request){
         // Conseguir usuario identificado
         $user = \Auth::user();
@@ -54,6 +56,7 @@ class UserController extends Controller
 
         // Subir la imagen
         $image_path = $request->file('image_path');
+        // si la imagen existe
         if($image_path){
             // Colocar nombre unico
             $image_path_name = time().$image_path->getClientOriginalName();
@@ -70,12 +73,14 @@ class UserController extends Controller
                          ->with(['message'=>'Usuario actualizado Correctamente']);
     }
 
+    /*Esta funcion lo que hace es recibir el nombre de una imagen por la url, luego para buscar la imagen solicitada por url se llama al Storge::disk de nombre users,users es el nombre del filesystem que es la que almacena todos los datos de las imagenes en los storages, luego se le otorga el nombre que se quiere buscar con el get() para hacer una especie de select, finalmente se devuelve un objeto con la info de la imagen*/
     public function obtenerImagen($filename){
         $file = Storage::disk('users')->get($filename);
 
         return new Response($file,200);
     }
 
+    //funcion que redirije al perfil del usuario segun su id
     public function profile($id){
         $user = User::find($id);
 

@@ -1,17 +1,18 @@
 var url = 'http://127.0.0.1:8000';
 window.addEventListener('load', function(){
 
-    $('.btn-like').css('cursor','pointer');
-    $('.btn-dislike').css('cursor','pointer');
+    $('#btn-like').css('cursor','pointer');
+    $('#btn-dislike').css('cursor','pointer');
 
     //boton de like
     function like(){
-        $('.btn-like').unbind('click').click(function(){
+        $('#btn-like').unbind('click').click(function(){
             console.log('like');
             $(this).addClass('btn-dislike').removeClass('btn-like');
             $(this).attr('src',url+'/img/redHeart.png');
+            var url1 = url+'/like/'+$(this).data('id');
             $.ajax({
-                url: url+'/like/'+$(this).data('id'),
+                url: url1,
                 type: 'GET',
                 success: function(response){
                     console.log(response);

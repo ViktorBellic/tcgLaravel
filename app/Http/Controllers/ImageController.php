@@ -15,11 +15,11 @@ class ImageController extends Controller
     {
         $this->middleware('auth');
     }
-
+    //funcion que envia a la vista image.create para listar imagenes
     public function create(){
         return view('image.create');
     }
-
+    //metoodo que se encarga de subir imagenes
     public function save(Request $request){
         //validacion
         $validate = $this->validate($request ,[
@@ -44,7 +44,8 @@ class ImageController extends Controller
             $image->image_path = $image_path_name;
         }
 
-        $image->save();
+        $image->save();//este metodo realiza el insert en la BD
+        //este return nos redirije a la vista image.create, con un mensaje de confirmación de la subida
         return redirect()->route('image.create')->with([
             'message' => 'La foto se ha subido correctamente'
         ]);
@@ -54,7 +55,7 @@ class ImageController extends Controller
         $file = Storage::disk('images')->get($filename);
         return new Response($file, 200);
     }
-
+    //funcion que permite abrir un post de una imagen y ver los comentarios dentro de ella
     public function detail($id){
 
         $image =  Imagen::find($id);
@@ -63,22 +64,24 @@ class ImageController extends Controller
         ]);
     }
 
+    //funcion que se encarga de eliminar una imagen cuando abrimos el post
     public function delete($id){
-        $user = \Auth::user();
-        $image = Imagen::find($id);
-        $comments = Comment::where('image_id', $id)->get();
-        $likes = Like::where('image_id', $id)->get();
+        $user = \Auth::user(); //aqui se identifica el usuario logeado, por ende su id y todo sus atributos
+        $image = Imagen::find($id); // aqui se busca la id de la imagen enviada por url
+        $comments = Comment::where('image_id', $id)->get(); //aqui se busca el comentario que tiene l img
+        $likes = Like::where('image_id', $id)->get();// aqui se buscan todos los likes asociados a la img
 
+        /*el siguiente if funciona de la siguiente manera, si el usuario y la imagen existen, y ademas si la imagen cuyo id del usuariio que tiene por atributo es igual al id del usuario autentificado en al sesion se eliminaran toda la info por que cumplio con las condiciones*/
         if($user && $image && $image->user->id == $user->id){
 
-            //Eliminar comentarios
+            /*Eliminar comentarios, basicamente recorremos todos los comentarios existentes y los elimimos uno en uno*/
             if($comments && count($comments)>=1){
                 foreach($comments as $comment){
                     $comment->delete();
 
                 }
             }
-            //Eliminar likes
+            //Eliminar likes, y lo mismo que los comentarios
             if($likes && count($likes)>=1){
                 foreach($likes as $like){
                     $like->delete();
@@ -98,15 +101,17 @@ class ImageController extends Controller
 
     }
 
+    //Funcion que se encarga de editar una imagen y su info
     public function edit($id){
-        $user = \Auth::user();
-        $image = Imagen::find($id);
+        $user = \Auth::user(); //aqui se identifica el usuario logeado, por ende su id y todo sus atributos
+        $image = Imagen::find($id); // aqui se busca la id de la imagen enviada por url
+        //la siguiente condicion funciona de la misma manera que la de la funcion delete
         if($user && $image && $image->user->id == $user->id){
             return view('image.edit',[
                 'image' => $image
             ]);
         }else{
-            return redirect()->route0('homeUser');
+            return redirect()->route('homeUser');
         }
     }
 

@@ -33,13 +33,13 @@ class Likecontroller extends Controller
         $like->image_id = (int)$image_id;
 
         //Guardar
-        var_dump($like);
+
         $like->save();
         return response()->json([
             'like' =>$like
         ]);
         }else{
-            echo response()->json([
+            return response()->json([
                 'message'=>'El like ya existe'
             ]);
 
