@@ -3,6 +3,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <div class="card pub_image">
             <h1>Personas</h1>
             <form method="GET" action="{{route('users.index')}}" id="buscador">
                 <div class="row">
@@ -28,7 +29,8 @@
                 <h2>{{$user->name}}</h2>
                 <h3>{{$user->email}}</h3>
                 <p>{{'Se unió:'.FormatTime::LongTimeFilter($user->created_at)}}</p>
-                <a href="{{route('profile',['id' => $user->id])}}" class="btn btn-success">ver perfil</a>
+                <a href="{{route('profile',['id' => $user->id])}}" class="btn btn-success">Ver perfil</a>
+                <a styles="font-color:white;"class="btn btn-primary"> Seguir</a>
                 <hr>
                 </div>
                 <div class="clearfix"></div>
@@ -40,5 +42,6 @@
             {{$users->links()  }}
         </div>
     </div>
+</div>
 </div>
 @endsection

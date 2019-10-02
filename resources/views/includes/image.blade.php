@@ -7,7 +7,7 @@
         @endif
         <div class="data-user">
         <a href="{{ route('profile', ['id' => $image->user->id])}}">
-        <h1>{{$image->user->name.' '.$image->user->email.' '.$image->id_imagen}}</h1>
+        <h1>{{$image->user->name.''.$image->id_imagen}}</h1>
         </a>
         </div>
         <div class="card-body">
@@ -18,7 +18,7 @@
                 <span class="date">{{FormatTime::LongTimeFilter($image->created_at)}}</span>
                 <p> {{$image->description}}</p>
             </div>
-            <h1>includes.like</h1>
+
             <div class="likes">
                 <!--Comprobar si un usuario le dio like a una imagen-->
                 <?php $user_like = false; ?>
@@ -35,7 +35,7 @@
                 <span class="number_likes"> {{count($image->likes)}}</span>
                 </div>
             <div class="comments">
-            <a href="{{ route('image.detail', ['id' => $image->id])}}" class="btn btn-sm btn-warning btn-comments">Comentarios({{count($image->comments)}})</a>
+            <a href="{{ route('image.detail', ['id' => $image->id])}}" ><i class="far fa-comment-dots fa-lg"></i> Comentarios({{count($image->comments)}})</a>
             </div>
         </div>
     </div>

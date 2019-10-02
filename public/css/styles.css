@@ -1,3 +1,20 @@
+a{
+    font-size: 14px;
+}
+h1{
+    font-size: 14px;
+}
+body
+{
+    background: #ECE9E6;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+.test{
+    margin-top: 56px;
+
+}
 
 .header_section{
 
@@ -30,6 +47,8 @@
 }
 .pub_image{
     margin-bottom: 25px;
+    margin-top:40px;
+
 }
 
 .pub_image .container_avatar{
@@ -42,8 +61,10 @@
     line-height: 40px;
 
 }
-.pub_image .data-user a{
+.pub_image .data-user a h1{
     color: black;
+    margin-top: 10px;
+    font-size: 14px;
 
 }
 .image-container{
@@ -54,17 +75,19 @@
 }
 
 .image-detail{
-    max-height: 500px;
+    max-height: 400px;
 }
 
 
 .image-container img{
    width: 100%;
    height: 100%;
+
 }
 
 .pub_image .card-body{
     padding: 0px;
+    margin-top:40px;
  }
 
  .pub_image .description{
@@ -104,6 +127,7 @@
 .profile-user{
     height: 200px;
     margin-bottom:40px;
+    margin-top:40px;
 }
 
 .profile-user .container-avatar{
@@ -128,6 +152,29 @@
     margin-left: 0px;
     padding-left: 0px;
 }
+.container .fav_h1{
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 35px;
+
+}
+ .ops_user .btn{
+    margin-top: 20px;
+}
+.card {
+    margin-top: 70px;
+}
+.card-columns .card .card-body{
+    height: 300px;
+    max-height: 80%;
+}
+
+.comments a{
+    color:#566573;
+    margin-left: 20px;
+}
+
+
 
 form .avatar{
     /*display: block;*/

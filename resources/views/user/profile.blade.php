@@ -25,12 +25,92 @@
                 <hr>
             </div>
             <div class="clearfix"></div>
-            <div><h3><a href="{{route('image.create')}}">subir imagen</a></h3></div>
+            <div class="ops_user">
+                <div class="row align-items-start">
+                    <div class="col-4 col-md-4">
+                        <h3><a class="btn btn-primary" href="{{route('image.create')}}">subir imagen</a></h3>
+                    </div>
+                    <div class="col-4 col-md-4">
+                        <h3><a class="btn btn-primary" href="">Crear Mazo</a></h3>
+                    </div>
+                </div>
+            </div>
             <hr>
             <div class="clearfix"></div>
+            <!--Seccion de mazos del usuario-->
+            <div class="card-group">
+                <div class="card">
+                    <div class="card-body">
+                    <a href="#" data-toggle="modal" data-target="#exampleModal">
+                    <img src="{{asset('img/img2.jpg')}}" class="card-img-top" alt="..."/>
+                    </a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">54 cartas</small></p>
+                    </div>
+                </div>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+                <div class="card">
+                    <div class="card-body">
+                    <a href="#" >
+                    <img src="{{asset('img/img3.jpg')}}" class="card-img-top" alt="..."/>
+                    </a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">54 cartas</small></p>
+                    </div>
+                </div>
+                <div class="card">
+
+                    <div class="card-body">
+                    <a href="#">
+                    <img src="{{asset('img/img4.jpg')}}" class="card-img-top" alt="..."/>
+                    </a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">54 cartas</small></p>
+                    </div>
+                </div>
+                <div class="card">
+
+                    <div class="card-body">
+                    <a href="#">
+                    <img src="{{asset('img/img4.jpg')}}" class="card-img-top" alt="..."/>
+                    </a>
+                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    <p class="card-text"><small class="text-muted">54 cartas</small></p>
+                    </div>
+                </div>
+                </div>
+                <!--Fin seccion de mazos del usuario-->
+
+
+    <div class="card-columns">
             @foreach($user->imagen as $image)
-                @include('includes.image',['image'=>$image])
+            <div class="card">
+            <div class="card-body">
+                @include('includes.profileImage',['image'=>$image])
+            </div>
+            </div>
             @endforeach
+
+    </div>
 
         </div>
     </div>

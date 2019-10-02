@@ -4,6 +4,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
+             <div class="create_img">
                 <div class="card-header">
                     Subir nueva imagen
                     @include('includes.message')
@@ -50,6 +51,7 @@
 
                     </form>
                 </div>
+            </div>
            </div>
         </div>
     </div>
