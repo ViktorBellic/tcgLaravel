@@ -15,7 +15,7 @@
                 <img src="{{ route('image.file',['filename'=> $image->image_path]) }}"/>
             </div>
             <div class="description">
-                <span class="date">{{FormatTime::LongTimeFilter($image->created_at)}}</span>
+                <span >{{FormatTime::LongTimeFilter($image->created_at)}}</span>
                 <p> {{$image->description}}</p>
             </div>
 

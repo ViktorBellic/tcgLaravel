@@ -13,11 +13,22 @@
                         <img src="{{ route('obtenerImagen',['filename'=>$user->image])}}" class="avatar"/>
                         </div>
                     @endif
-
                 <div class="user-info">
                     <h1>{{$user->name}}</h1>
                     <h2>{{$user->email}}</h2>
+                    @if(Auth::user()->id == $user->id )
                     <h3><a href="{{route('edit')}}">Editar perfil</a></h3>
+                    @endif
+                    @if(!empty($friendrequest) && Auth::user()->id != $user->id )
+                        @if($friendrequest=="Agregar")
+                            <a href="{{url('/gente/add-friend',['username' =>$user->name])}}" styles="font-color:white;"class="btn btn-primary">{{$friendrequest}}</a>
+                        @elseif($friendrequest=="Amigo(Eliminar amigo)")
+                            <a href="{{url('/gente/remove-friend',['username' =>$user->name])}}" styles="font-color:white;"class="btn btn-warning">{{$friendrequest}}</a>
+                        @else
+                        <span class="btn btn-secondary">{{$friendrequest}}</span>
+                        @endif
+                    @endif
+
                     <p>{{'Se unió:'.FormatTime::LongTimeFilter($user->created_at)}}</p>
                     <hr>
                 </div>

@@ -65,3 +65,12 @@ Route::post('/image/update','ImageController@update')->name('image.update');
 
 //ruta buscador de usuarios
 Route::get('/gente/{search?}','UserController@usersIndex')->name('users.index');
+
+//Solicitudes de amistad
+Route::match(['get','post'],'/gente/add-friend/{username}','UserController@addFriend');
+Route::match(['get','post'],'/gente/remove-friend/{username}','UserController@removeFriend');
+
+Route::get('/friends-requests','UserController@friendsRequests');
+Route::get('/accept-friend-request/{id}','UserController@acceptFriendsRequests');
+Route::get('/reject-friend-request/{id}','UserController@rejectFriendsRequests');
+//Route::get('/friends-requests','UserController@usersSender');

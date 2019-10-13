@@ -13,7 +13,7 @@
                             </div>
                         @endif
                         <div class="data-user">
-                         <h1>{{$image->user->name.' '.$image->user->email}}</h1>
+                         <h1>{{$image->user->name}}</h1>
                         </div>
                          <div class="card-body">
                             <div class="image-container image-detail">

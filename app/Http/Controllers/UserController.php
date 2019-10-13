@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Response;
 use App\Imagen;
 use App\User;
+use App\Friend;
 class UserController extends Controller
 {
     //No autorizar usuarios no logoeados
@@ -34,10 +35,34 @@ class UserController extends Controller
             'users' => $users
         ]);
 
-}
+    }
     //Esta funcion redirije al usuario a la vista user.edit
     public function configuracion(){
         return view('user.edit');
+    }
+
+    public function friendsRequests(){
+        $users = User::orderBy('id','desc')->paginate(5);
+        $user_id=\Auth::user()->id;
+        $friendsRequests = Friend::where('friend_id',$user_id)->get();
+        $friendsRequests = json_decode(json_encode($friendsRequests));
+       //echo "<pre>"; print_r($friendsRequests); die;
+        return view('notificaciones.friends_request',[
+            'users' => $users
+        ])->with(compact('friendsRequests'));
+    }
+
+    public function acceptFriendsRequests($emisor_id){
+
+        $receptor_id = \Auth::user()->id;
+        Friend::where(['user_id'=>$emisor_id,'friend_id'=>$receptor_id])->update(['accept'=> 1]);
+        return redirect()->back();
+    }
+    public function rejectFriendsRequests($emisor_id){
+
+        $receptor_id = \Auth::user()->id;
+        Friend::where(['user_id'=>$emisor_id,'friend_id'=>$receptor_id])->delete();
+        return redirect()->back();
     }
 
     //Esta funcion es la encargada de actualizar los datos del perfil del usuario
@@ -84,10 +109,81 @@ class UserController extends Controller
     public function profile($id){
         $user = User::find($id);
 
+
+        if(\Auth::check()){
+            //Verificar si es mi amigo o no
+            $user_id = \Auth::user()->id;
+            $friend_id = $id;
+            $friendCount = Friend::where(['user_id'=>$user_id,'friend_id'=>$friend_id])->count();
+            $friendrequest = "";
+            if($friendCount>0){
+               $user_check = $friendCount = Friend::where(['user_id'=>$user_id,'friend_id'=>$friend_id])->first();
+
+
+                if($user_check->accept == 1){
+                    $friendrequest = "Amigo(Eliminar amigo)";
+                }else{
+                    $friendrequest = "Solicitud enviada";
+                }
+            }else{
+                $friendrequest = "Agregar";
+            }
+        }else{
+            $friendrequest = "";
+        }
+
+
         return view('user.profile',[
-            'user' =>$user
+            'user' =>$user,
+            'friendrequest'=> $friendrequest
         ]);
+
+
     }
 
+    public function addFriend($username){
+
+        $userCount = User::where('name',$username)->count();
+        $user;
+        if($userCount>0)
+        {
+            $user_id=\Auth::user()->id;
+            $friend_id = User::getUserId($username);
+            $user = User::find($friend_id);
+            $friend = new Friend;
+            $friend->user_id = $user_id;
+            $friend->friend_id = $friend_id;
+            $friend->save();
+            return redirect()->back();
+            //echo "friend request send to ".$username; die;
+        }else{
+            abort(404);
+        }
+    }
+
+    public function removeFriend($username){
+
+        $userCount = User::where('name',$username)->count();
+        $user;
+        if($userCount>0)
+        {
+            $user_id=\Auth::user()->id;
+            $friend_id = User::getUserId($username);
+            $user = User::find($friend_id);
+            Friend::where(['user_id'=>$user_id,'friend_id'=>$friend_id])->delete();
+            return redirect()->back();
+            //echo "friend request send to ".$username; die;
+        }else{
+            abort(404);
+        }
+    }
+
+   /* public function usersSender(){
+
+        $users = User::orderBy('id','desc')->paginate(5);
+        return view('notificaciones.friends_request',[
+            'users' => $users
+        ]);
+    }*/
 
 }

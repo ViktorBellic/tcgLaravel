@@ -40,4 +40,9 @@ class User extends Authenticatable
     public function imagen(){
         return $this->hasMany('App\Imagen');
     }
+
+    public static function getUserId($username){
+        $getUserId = User::select('id')->where('name',$username)->first();
+        return $getUserId->id;
+    }
 }
