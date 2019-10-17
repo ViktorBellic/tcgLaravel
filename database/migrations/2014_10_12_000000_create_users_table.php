@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->bigIncrements('id');
            // $table->foreign('idPerfil')->references('idPerfil')->on('perfil');
             $table->string('name');
+            $table->string('lastname');
             $table->string('email',30)->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
