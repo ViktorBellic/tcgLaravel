@@ -74,3 +74,8 @@ Route::get('/friends-requests','UserController@friendsRequests');
 Route::get('/accept-friend-request/{id}','UserController@acceptFriendsRequests');
 Route::get('/reject-friend-request/{id}','UserController@rejectFriendsRequests');
 //Route::get('/friends-requests','UserController@usersSender');
+
+
+Route::get('/chat/{id}', 'ChatsController@index');
+Route::get('messages', 'ChatsController@fetchMessages');
+Route::post('messages', 'ChatsController@sendMessage');

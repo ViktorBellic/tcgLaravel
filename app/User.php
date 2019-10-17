@@ -45,4 +45,14 @@ class User extends Authenticatable
         $getUserId = User::select('id')->where('name',$username)->first();
         return $getUserId->id;
     }
+/**
+ * A user can have many messages
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+    public function messages()
+    {
+        //return $this->hasMany(Message::class);
+        return $this->hasMany('App\Message','user_id'); // Para relacionar
+    }
 }

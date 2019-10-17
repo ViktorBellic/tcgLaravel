@@ -22,10 +22,14 @@
                     @if(!empty($friendrequest) && Auth::user()->id != $user->id )
                         @if($friendrequest=="Agregar")
                             <a href="{{url('/gente/add-friend',['username' =>$user->name])}}" styles="font-color:white;"class="btn btn-primary">{{$friendrequest}}</a>
+                            <a href="{{url('/chat',['id' => $user->id])}}" styles="font-color:white;"class="btn btn-dark">Enviar mensaje</a>
+
                         @elseif($friendrequest=="Amigo(Eliminar amigo)")
                             <a href="{{url('/gente/remove-friend',['username' =>$user->name])}}" styles="font-color:white;"class="btn btn-warning">{{$friendrequest}}</a>
+                            <a href="#" styles="font-color:white;"class="btn btn-dark">Enviar mensaje</a>
                         @else
                         <span class="btn btn-secondary">{{$friendrequest}}</span>
+                        <a href="{{url('/chat',['id' => $user->id])}}" styles="font-color:white;"class="btn btn-dark">Enviar mensaje</a>
                         @endif
                     @endif
 
